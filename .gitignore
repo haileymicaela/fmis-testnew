@@ -1,0 +1,82 @@
+
+# ============================================================
+# CSPC ACCOUNTING MODULE - GITIGNORE
+# HTML / CSS / JavaScript / PHP / MariaDB / XAMPP
+# ============================================================
+
+# 1. Secrets and local environment configuration
+.env
+.env.*
+!.env.example
+*.local.php
+backend/config/database.local.php
+config/secrets.php
+
+# 2. Editor configuration and local file history
+.vscode/
+.idea/
+.history/
+*.code-workspace
+*.swp
+*.swo
+*~
+
+# 3. Temporary and debug files
+*.log
+*.tmp
+*.temp
+*.cache
+*.bak
+*.orig
+*.rej
+*.pid
+
+# 4. Local backup folders
+frontend-backup/
+backend-backup/
+database-backup/
+backups/
+backup/
+.dist/
+
+# 5. Database backups and exported dumps
+*backup*.sql
+*.sql.bak
+*.sql.gz
+*.dump
+
+# 6. Generated reports
+report.pdf
+report.xlsx
+backend/storage/*
+!backend/storage/.gitkeep
+
+# 7. Authentication and session files
+cookies.txt
+frontend/cookies.txt
+backend/cookies.txt
+sess_*
+*.session
+
+# 8. Dependency directories
+node_modules/
+vendor/
+
+# 9. Test output and coverage
+coverage/
+.nyc_output/
+playwright-report/
+test-results/
+.phpunit.cache/
+.phpunit.result.cache
+
+# 10. Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# 11. Local development tools
+.phpunit-watcher.yml
+.phpactor.yml
+.phpunit-watcher.yml

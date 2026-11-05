@@ -1,0 +1,13 @@
+ref_no,txn_date,amount,cross_ref,payee,description
+SYNTEST-OCT26-BANK-001,2026-10-02,1250.00,TEST-DEP-001,Fictional Campus Unit,Test deposit one
+SYNTEST-OCT26-BANK-002,2026-10-04,2845.50,TEST-DEP-002,Fictional Campus Unit,Test deposit two
+SYNTEST-OCT26-BANK-003,2026-10-06,3960.75,TEST-DEP-003,Fictional Campus Unit,Test deposit three
+SYNTEST-OCT26-BANK-004,2026-10-08,4125.00,TEST-DEP-004,Fictional Campus Unit,Test deposit four
+SYNTEST-OCT26-BANK-005,2026-10-10,5732.25,TEST-DEP-005,Fictional Campus Unit,Test deposit five
+SYNTEST-OCT26-BANK-006,2026-10-12,6850.00,TEST-DEP-006,Fictional Campus Unit,Test deposit six
+SYNTEST-OCT26-BANK-007,2026-10-14,7942.10,TEST-DEP-007,Fictional Campus Unit,Test deposit seven
+SYNTEST-OCT26-BANK-008,2026-10-16,8164.80,TEST-DEP-008,Fictional Campus Unit,Test deposit eight
+SYNTEST-OCT26-BANK-009,2026-10-18,9235.40,TEST-DEP-009,Fictional Campus Unit,Test deposit nine
+SYNTEST-OCT26-BANK-010,2026-10-20,10450.00,TEST-DEP-010,Fictional Campus Unit,Test deposit ten
+SYNTEST-OCT26-BANK-011,2026-10-22,11675.95,TEST-DEP-011,Fictional Campus Unit,Test deposit eleven
+SYNTEST-OCT26-BANK-012,2026-10-24,12880.35,TEST-DEP-012,Fictional Campus Unit,Test deposit twelve

@@ -1,0 +1,6 @@
+ref_no,cross_ref,support_ref,txn_date,amount,payee,description,account_code
+LEDGER-TEST-001,MATCH-001,SIAS-TEST-001,2026-10-04,1250.00,CSPC Student Accounts,Matched case,1010
+LEDGER-TEST-002,MATCH-002,VOUCHER-TEST-001,2026-10-11,420.50,North Campus Supply,Possible date-gap case,5010
+LEDGER-TEST-003,MATCH-003,SIAS-TEST-002,2026-10-12,950.00,Bicol Utility Services,Unmatched amount case,5020
+LEDGER-TEST-004,DUP-004,VOUCHER-TEST-002,2026-10-15,250.00,CSPC Procurement,Duplicate reference group,6100
+LEDGER-TEST-005,LEDGER-ONLY-005,SIAS-TEST-003,2026-10-22,360.00,Regional Learning Services,Ledger record without bank counterpart,6200
