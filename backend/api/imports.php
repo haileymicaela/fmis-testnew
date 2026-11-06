@@ -428,7 +428,7 @@ try {
     );
     $insert = $pdo->prepare(
         'INSERT INTO staged_records
-            (staged_import_id, row_number, ref_no, cross_ref, support_ref, txn_date, period,
+            (staged_import_id, `row_number`, ref_no, cross_ref, support_ref, txn_date, period,
              amount, payee, description, account_code)
          VALUES
             (:stage_id, :row_number, :ref_no, :cross_ref, :support_ref, :txn_date, :period,

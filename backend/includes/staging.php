@@ -25,7 +25,7 @@ function ensure_staging_tables(PDO $pdo): void
         'CREATE TABLE IF NOT EXISTS staged_records (
             id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             staged_import_id INT UNSIGNED NOT NULL,
-            row_number INT UNSIGNED NOT NULL,
+            `row_number` INT UNSIGNED NOT NULL,
             ref_no VARCHAR(30) NOT NULL,
             cross_ref VARCHAR(30) NULL,
             support_ref VARCHAR(30) NULL,
@@ -35,7 +35,7 @@ function ensure_staging_tables(PDO $pdo): void
             payee VARCHAR(120) NULL,
             description VARCHAR(160) NULL,
             account_code VARCHAR(12) NULL,
-            UNIQUE KEY uq_staged_file_row (staged_import_id, row_number),
+            UNIQUE KEY uq_staged_file_row (staged_import_id, `row_number`),
             KEY idx_staged_record_ref (ref_no),
             CONSTRAINT fk_staged_record_import FOREIGN KEY (staged_import_id) REFERENCES staged_imports(id) ON DELETE CASCADE
         ) ENGINE=InnoDB'

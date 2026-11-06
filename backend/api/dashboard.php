@@ -25,9 +25,9 @@ $stmt->execute([':period' => $period]);
 $counts = $stmt->fetch();
 
 $discrepancyQry = $pdo->prepare(
-    'SELECT COUNT(*) AS needs_review,
+    'SELECT SUM(CASE WHEN status NOT IN ("resolved", "escalated") THEN 1 ELSE 0 END) AS needs_review,
             SUM(CASE WHEN status != "resolved" AND DATEDIFF(:as_of_date, DATE(flagged_at)) >= (SELECT CAST(svalue AS SIGNED) FROM settings WHERE skey = "overdue_days" LIMIT 1) THEN 1 ELSE 0 END) AS overdue
-     FROM discrepancies WHERE period = :period AND status != "resolved"'
+     FROM discrepancies WHERE period = :period'
 );
 $discrepancyQry->execute([':period' => $period, ':as_of_date' => app_today()]);
 $discrepancy = $discrepancyQry->fetch();

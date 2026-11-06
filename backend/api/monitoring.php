@@ -11,6 +11,7 @@ require_auth();
 $period = get_period_value($_GET['period'] ?? null);
 $pdo = db();
 $asOfDate = app_today();
+$overdueDays = max(1, (int) get_setting('overdue_days', 16));
 
 $stmt = $pdo->prepare(
     'SELECT COUNT(*) AS total,
@@ -25,14 +26,14 @@ $stmt->execute([':period' => $period]);
 $counts = $stmt->fetch();
 
 $needsReviewStmt = $pdo->prepare(
-    'SELECT COUNT(*) FROM discrepancies WHERE period = :period AND status != "resolved"'
+    'SELECT COUNT(*) FROM discrepancies WHERE period = :period AND status NOT IN ("resolved", "escalated")'
 );
 $needsReviewStmt->execute([':period' => $period]);
 
 $overdueStmt = $pdo->prepare(
-    'SELECT COUNT(*) FROM discrepancies WHERE period = :period AND status != "resolved" AND DATEDIFF(:as_of_date, DATE(flagged_at)) >= (SELECT CAST(svalue AS SIGNED) FROM settings WHERE skey = "overdue_days" LIMIT 1)'
+    'SELECT COUNT(*) FROM discrepancies WHERE period = :period AND status != "resolved" AND DATEDIFF(:as_of_date, DATE(flagged_at)) >= :overdue_days'
 );
-$overdueStmt->execute([':period' => $period, ':as_of_date' => $asOfDate]);
+$overdueStmt->execute([':period' => $period, ':as_of_date' => $asOfDate, ':overdue_days' => $overdueDays]);
 
 $discrepancyStmt = $pdo->prepare(
     'SELECT d.*, COALESCE(u.full_name, "Unassigned") AS assigned_to,
@@ -60,5 +61,7 @@ json_success([
         'overdue' => (int) $overdueStmt->fetchColumn(),
         'rate' => $rate,
     ],
+    'overdueDays' => $overdueDays,
+    'toleranceDays' => max(0, (int) get_setting('date_tolerance_days', 2)),
     'discrepancies' => $discrepancyStmt->fetchAll(),
 ]);
