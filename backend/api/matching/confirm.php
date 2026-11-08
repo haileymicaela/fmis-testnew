@@ -94,17 +94,21 @@ try {
         ]);
 
     $pdo->prepare(
-        'UPDATE discrepancies
-         SET status = "resolved", resolved_by = :user_id, resolved_at = NOW(), resolution_note = :note
-         WHERE record_id IN (:record_bank_id, :record_ledger_id)
-            OR counter_record_id IN (:counter_bank_id, :counter_ledger_id)'
+    'UPDATE discrepancies
+     SET status = "resolved", resolved_by = :user_id, resolved_at = NOW(), resolution_note = :note
+     WHERE period = :period
+       AND status IN ("needs_review", "pending")
+       AND issue_type IN ("no_match", "duplicate", "date_gap")
+       AND ((record_id = :bank_a AND counter_record_id = :ledger_a)
+         OR (record_id = :ledger_b AND counter_record_id = :bank_b))'
     )->execute([
-        ':user_id' => $_SESSION['user_id'] ?? null,
-        ':note' => 'Match manually confirmed',
-        ':record_bank_id' => (int) $match['bank_id'],
-        ':record_ledger_id' => (int) $match['ledger_id'],
-        ':counter_bank_id' => (int) $match['bank_id'],
-        ':counter_ledger_id' => (int) $match['ledger_id'],
+        ':user_id'  => $_SESSION['user_id'] ?? null,
+        ':note'     => 'Match manually confirmed',
+        ':period'   => $match['period'],
+        ':bank_a'   => (int) $match['bank_id'],
+        ':ledger_a' => (int) $match['ledger_id'],
+        ':ledger_b' => (int) $match['ledger_id'],
+        ':bank_b'   => (int) $match['bank_id'],
     ]);
 
     log_audit_event('Match confirmed', 'Matching', (string) $match['id'], 'success', 'Manual confirmation');

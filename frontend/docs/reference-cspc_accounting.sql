@@ -178,7 +178,6 @@ INSERT INTO users (id, full_name, email, password_hash, role_label, initials) VA
 
 -- --------------------------------------------------------- settings
 INSERT INTO settings (skey, svalue) VALUES
-('as_of_date', '2026-02-18'),
 ('institution', 'Camarines Sur Polytechnic Colleges'),
 ('bank_name', 'Land Bank of the Philippines'),
 ('lock_threshold', '5'),

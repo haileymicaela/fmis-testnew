@@ -122,8 +122,11 @@ try {
         $key = ($bankId ?? 'null') . ':' . ($ledgerId ?? 'null');
         $existing = $existingMatches[$key] ?? null;
 
-        if (($existing !== null && (int) $existing['confirmed'] === 1)
-            || ($bankId !== null && isset($confirmedRecords[$bankId]))
+        if ($existing !== null && (int) $existing['confirmed'] === 1) {
+            $results[] = 'matched';   // a confirmed pair still counts in this run
+            return;
+        }
+        if (($bankId !== null && isset($confirmedRecords[$bankId]))
             || ($ledgerId !== null && isset($confirmedRecords[$ledgerId]))) {
             return;
         }
@@ -191,7 +194,7 @@ try {
                 ':period' => $period,
                 ':issue_type' => $issueType,
                 ':record_a' => $bankId ?? $ledgerId,
-                ':counter_a' => $ledgerId,
+                ':counter_a' => $bankId !== null ? $ledgerId : null,
                 ':record_b' => $ledgerId ?? $bankId,
                 ':counter_b' => $bankId,
             ]);
@@ -201,18 +204,25 @@ try {
                 $flaggedAt = new DateTimeImmutable('now', new DateTimeZone('Asia/Manila'));
                 $prefix = $issueType === 'no_match' ? 'NM' : 'DP';
                 $diagnosis = $issueType === 'no_match'
-                    ? ($other === null
-                        ? 'No counterpart was found for ' . ($primary['cross_ref'] ?: ('record ' . $primary['id'])) . '.'
-                        : 'Bank and ledger records share a reference but fail the matching criteria.')
-                    : 'Multiple bank or ledger records share the same reference group.';
-                $suggestedAction = $issueType === 'no_match'
-                    ? 'Locate the missing counterpart or correct the transaction reference.'
-                    : 'Compare the duplicate records and retain the valid posting.';
+    ? ($other === null
+        ? 'No counterpart was found for ' . ($primary['cross_ref'] ?: ('record ' . $primary['id'])) . '.'
+        : ($bank['amount'] === null || $ledger['amount'] === null
+            ? 'Bank and ledger records share a reference but an amount is missing.'
+            : 'Bank and ledger records share a reference but the amounts differ: bank '
+                . number_format((float) $bank['amount'], 2) . ', ledger '
+                . number_format((float) $ledger['amount'], 2) . '.'))
+    : 'This ' . $primary['source'] . ' record repeats reference ' . $primary['cross_ref']
+        . ', which is already used by another ' . $primary['source'] . ' record.';
+$suggestedAction = $issueType === 'no_match'
+    ? ($other === null
+        ? 'Locate the missing counterpart or correct the transaction reference.'
+        : 'Compare the bank and ledger amounts and correct the posting that is wrong.')
+    : 'Confirm which posting is valid and investigate the repeated one.';
                 $insertGeneratedDiscrepancy->execute([
                     ':ref_code' => $prefix . str_pad((string) $matchId, 10, '0', STR_PAD_LEFT),
                     ':period' => $period,
                     ':record_id' => $bankId ?? $ledgerId,
-                    ':counter_record_id' => $ledgerId,
+                    ':counter_record_id' => $bankId !== null ? $ledgerId : null,
                     ':issue_type' => $issueType,
                     ':flagged_on' => $primary['txn_date'],
                     ':flagged_at' => $flaggedAt->format('Y-m-d H:i:s'),
@@ -242,6 +252,18 @@ try {
         if ($banks !== [] && $ledgers !== []) {
             $bank = $banks[0];
             $ledger = $ledgers[0];
+            foreach ($banks as $candidateBank) {
+    foreach ($ledgers as $candidateLedger) {
+        if ($candidateBank['amount'] !== null && $candidateLedger['amount'] !== null
+            && (float) $candidateBank['amount'] === (float) $candidateLedger['amount']
+            && abs((int) (new DateTimeImmutable((string) $candidateBank['txn_date']))
+                ->diff(new DateTimeImmutable((string) $candidateLedger['txn_date']))->days) <= $toleranceDays) {
+            $bank = $candidateBank;
+            $ledger = $candidateLedger;
+            break 2;
+        }
+    }
+}
             $amountOk = $bank['amount'] !== null
                 && $ledger['amount'] !== null
                 && (float) $bank['amount'] === (float) $ledger['amount'];
@@ -251,23 +273,6 @@ try {
                 ->diff(new DateTimeImmutable((string) $ledger['txn_date']))->days);
             $dateOk = $dateDiff <= $toleranceDays;
 
-            if ($hasDuplicates) {
-                $saveComparison($bank, $ledger, 'duplicate', $amountOk, $referenceOk, $dateOk, $dateDiff, [
-                    (int) $bank['id'],
-                    (int) $ledger['id'],
-                ]);
-                foreach (array_slice($banks, 1) as $duplicateBank) {
-                    $saveComparison($duplicateBank, $ledger, 'duplicate', null, true, null, null, [
-                        (int) $duplicateBank['id'],
-                    ]);
-                }
-                foreach (array_slice($ledgers, 1) as $duplicateLedger) {
-                    $saveComparison($bank, $duplicateLedger, 'duplicate', null, true, null, null, [
-                        (int) $duplicateLedger['id'],
-                    ]);
-                }
-                continue;
-            }
 
             $result = $amountOk && $referenceOk && $dateOk
                 ? 'matched'
@@ -276,6 +281,16 @@ try {
                 (int) $bank['id'],
                 (int) $ledger['id'],
             ]);
+            foreach ($banks as $extraBank) {
+    if ((int) $extraBank['id'] !== (int) $bank['id']) {
+        $saveComparison($extraBank, null, 'duplicate', null, true, null, null, [(int) $extraBank['id']]);
+    }
+}
+foreach ($ledgers as $extraLedger) {
+    if ((int) $extraLedger['id'] !== (int) $ledger['id']) {
+        $saveComparison(null, $extraLedger, 'duplicate', null, true, null, null, [(int) $extraLedger['id']]);
+    }
+}
             continue;
         }
 

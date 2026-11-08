@@ -102,6 +102,7 @@ function run_support_matching(PDO $pdo, string $period, int $toleranceDays): int
         $ledgerId = (int) $ledger['id'];
         $existing = $existingByLedger[$ledgerId] ?? null;
         if ($existing !== null && (int) $existing['confirmed'] === 1) {
+            $processed++;
             continue;
         }
 
