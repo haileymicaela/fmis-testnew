@@ -1,3 +1,27 @@
 ref_no,txn_date,amount,payee,description,account_code
-VOUCHER-TEST-001,2026-10-07,420.50,North Campus Supply,Supply voucher supporting MATCH-002,5010
-VOUCHER-TEST-002,2026-10-15,250.00,CSPC Procurement,Procurement voucher supporting DUP-004,6100
+DV-2026-0951,2026-10-01,8345.25,Sampaloc Construction,Repairs and maintenance,RM-5040
+DV-2026-0952,2026-10-01,46643.25,Naga Data Systems,Equipment outlay,EQ-5070
+DV-2026-0953,2026-10-02,18071.25,Scholarship grants (1st batch),Student assistance and scholarship,SA-5080
+DV-2026-0954,2026-10-05,27468.50,Student assistantship payroll,Student assistance and scholarship,SA-5080
+DV-2026-0955,2026-10-05,22391.00,Partido Aircon Services,Repairs and maintenance,RM-5040
+DV-2026-0956,2026-10-07,34805.50,Bicol Paper and Supplies,Office supplies,OS-5020
+DV-2026-0957,2026-10-08,18590.75,Local Water District,Electricity and water,UT-5030
+DV-2026-0958,2026-10-09,10153.00,Bicol Paper and Supplies,Office supplies,OS-5020
+DV-2026-0959,2026-10-12,11583.50,Nabua Stationery Trading,Office supplies,OS-5020
+DV-2026-0960,2026-10-12,21681.50,Faculty travel reimbursement,Travel expenses,TR-5050
+DV-2026-0961,2026-10-12,30470.75,Rinconada Laboratory Supply,Equipment outlay,EQ-5070
+DV-2026-0962,2026-10-15,6635.00,Faculty travel reimbursement,Travel expenses,TR-5050
+DV-2026-0963,2026-10-15,34241.25,Camarines Electric Cooperative,Electricity and water,UT-5030
+DV-2026-0964,2026-10-19,42189.00,Naga Data Systems,Training and seminars,TS-5060
+DV-2026-0965,2026-10-20,45563.75,Bicol Tech Hardware,Repairs and maintenance,RM-5040
+DV-2026-0966,2026-10-20,44525.25,Local Water District,Electricity and water,UT-5030
+DV-2026-0967,2026-10-21,7945.00,Rinconada Office Mart,Office supplies,OS-5020
+DV-2026-0968,2026-10-22,19830.00,Faculty travel reimbursement,Travel expenses,TR-5050
+DV-2026-0969,2026-10-22,25057.50,Bicol Training Center,Training and seminars,TS-5060
+DV-2026-0970,2026-10-23,32993.50,Partido Aircon Services,Repairs and maintenance,RM-5040
+DV-2026-0971,2026-10-23,8383.25,Bicol Transport Cooperative,Travel expenses,TR-5050
+DV-2026-0972,2026-10-23,17300.00,Rinconada Office Mart,Office supplies,OS-5020
+DV-2026-0973,2026-10-26,9650.50,Partido Fuel and Lubricants,Travel expenses,TR-5050
+DV-2026-0974,2026-10-27,41013.50,Nabua Stationery Trading,Office supplies,OS-5020
+DV-2026-0975,2026-10-28,9562.00,Student assistantship payroll,Student assistance and scholarship,SA-5080
+DV-2026-0976,2026-10-28,21122.25,Bicol Paper and Supplies,Office supplies,OS-5020

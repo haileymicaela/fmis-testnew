@@ -1,3 +1,36 @@
 ref_no,txn_date,amount,payee,description,account_code
-SIAS-TEST-001,2026-10-03,1250.00,CSPC Student Accounts,Student collection supporting MATCH-001,4010
-SIAS-TEST-002,2026-10-12,700.00,Bicol Utility Services,Student account collection,4020
+OR-31001,2026-10-05,200.00,Paolo Corral,Certification and documentary fees,DOC-4040
+OR-31002,2026-10-06,12200.00,Maricar Buenaflor,"Rental income (canteen, dormitory)",RNT-4060
+OR-31003,2026-10-06,400.00,Trisha Ramos,Certification and documentary fees,DOC-4040
+OR-31004,2026-10-06,2550.00,Kenneth Buenaflor,Laboratory fees,LAB-4020
+OR-31005,2026-10-06,300.00,Nicole Abad,"Other school fees (ID, library, athletics)",OSF-4050
+OR-31006,2026-10-06,350.00,Carlo Corral,"Other school fees (ID, library, athletics)",OSF-4050
+OR-31007,2026-10-06,300.00,Liza Buenaflor,Certification and documentary fees,DOC-4040
+OR-31008,2026-10-06,350.00,Mae Gonzales,"Other school fees (ID, library, athletics)",OSF-4050
+OR-31009,2026-10-06,2550.00,Angelica Ramos,Laboratory fees,LAB-4020
+OR-31010,2026-10-07,450.00,Maricar Villanueva,Certification and documentary fees,DOC-4040
+OR-31011,2026-10-07,400.00,Paolo Reyes,Entrance exam fee,EXM-4030
+OR-31012,2026-10-08,1450.00,Rey Villanueva,Laboratory fees,LAB-4020
+OR-31013,2026-10-08,400.00,Cherry Ramos,Entrance exam fee,EXM-4030
+OR-31014,2026-10-09,7150.00,Paolo Corral,Income generating project sales,IGP-4070
+OR-31015,2026-10-09,300.00,Ramon Villanueva,"Other school fees (ID, library, athletics)",OSF-4050
+OR-31016,2026-10-14,2200.00,Mae Bautista,Laboratory fees,LAB-4020
+OR-31017,2026-10-15,17800.00,Paolo Reyes,Graduate school tuition,GSC-4010
+OR-31018,2026-10-16,14700.00,Maricar Reyes,"Rental income (canteen, dormitory)",RNT-4060
+OR-31019,2026-10-19,3200.00,Rey Reyes,Income generating project sales,IGP-4070
+OR-31020,2026-10-19,550.00,Maricar Gonzales,"Other school fees (ID, library, athletics)",OSF-4050
+OR-31021,2026-10-19,2550.00,Liza Obias,Laboratory fees,LAB-4020
+OR-31022,2026-10-20,16300.00,Ramon Obias,Graduate school tuition,GSC-4010
+OR-31023,2026-10-20,1200.00,Cherry Gonzales,Laboratory fees,LAB-4020
+OR-31024,2026-10-20,10600.00,Dianne Obias,Graduate school tuition,GSC-4010
+OR-31025,2026-10-21,2000.00,Arvin Belen,Laboratory fees,LAB-4020
+OR-31026,2026-10-21,1200.00,Carlo Corral,Laboratory fees,LAB-4020
+OR-31027,2026-10-22,250.00,Ramon Belen,Certification and documentary fees,DOC-4040
+OR-31028,2026-10-22,18500.00,Nicole Villanueva,Graduate school tuition,GSC-4010
+OR-31029,2026-10-22,1700.00,Paolo Bautista,Income generating project sales,IGP-4070
+OR-31030,2026-10-23,100.00,Jessa Belen,Certification and documentary fees,DOC-4040
+OR-31031,2026-10-26,500.00,Kenneth Ramos,Entrance exam fee,EXM-4030
+OR-31032,2026-10-27,400.00,Liza Pilapil,Certification and documentary fees,DOC-4040
+OR-31033,2026-10-27,2500.00,Rey Reyes,Laboratory fees,LAB-4020
+OR-31034,2026-10-29,300.00,Gerald Obias,"Other school fees (ID, library, athletics)",OSF-4050
+OR-31035,2026-10-30,4650.00,Trisha Santos,Income generating project sales,IGP-4070

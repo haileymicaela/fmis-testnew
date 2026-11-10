@@ -1,6 +1,59 @@
 ref_no,cross_ref,support_ref,txn_date,amount,payee,description,account_code
-LEDGER-TEST-001,MATCH-001,SIAS-TEST-001,2026-10-04,1250.00,CSPC Student Accounts,Matched case,1010
-LEDGER-TEST-002,MATCH-002,VOUCHER-TEST-001,2026-10-11,420.50,North Campus Supply,Possible date-gap case,5010
-LEDGER-TEST-003,MATCH-003,SIAS-TEST-002,2026-10-12,950.00,Bicol Utility Services,Unmatched amount case,5020
-LEDGER-TEST-004,DUP-004,VOUCHER-TEST-002,2026-10-15,250.00,CSPC Procurement,Duplicate reference group,6100
-LEDGER-TEST-005,LEDGER-ONLY-005,SIAS-TEST-003,2026-10-22,360.00,Regional Learning Services,Ledger record without bank counterpart,6200
+JV-2026-0901,CHK-004701,DV-2026-0951,2026-10-01,8345.25,Sampaloc Construction,Payment - Repairs and maintenance,RM-5040
+JV-2026-0902,CHK-004702,DV-2026-0953,2026-10-02,18071.25,Scholarship grants (1st batch),Payment - Student assistance and scholarship,SA-5080
+JV-2026-0903,CHK-004703,DV-2026-0952,2026-10-02,46643.25,Naga Data Systems,Payment - Equipment outlay,EQ-5070
+JV-2026-0904,DEP-0001,OR-31001,2026-10-06,200.00,Paolo Corral,Collection - Certification and documentary fees,DOC-4040
+JV-2026-0905,DEP-0003,OR-31003,2026-10-06,400.00,Trisha Ramos,Collection - Certification and documentary fees,DOC-4040
+JV-2026-0906,DEP-0004,OR-31004,2026-10-06,2550.00,Kenneth Buenaflor,Collection - Laboratory fees,LAB-4020
+JV-2026-0907,DEP-0008,OR-31008,2026-10-06,530.00,Mae Gonzales,"Collection - Other school fees (ID, library, athletics)",OSF-4050
+JV-2026-0908,CHK-004704,DV-2026-0954,2026-10-06,27468.50,Student assistantship payroll,Payment - Student assistance and scholarship,SA-5080
+JV-2026-0909,DEP-0002,OR-31002,2026-10-07,12200.00,Maricar Buenaflor,"Collection - Rental income (canteen, dormitory)",RNT-4060
+JV-2026-0910,DEP-0007,OR-31007,2026-10-07,300.00,Liza Buenaflor,Collection - Certification and documentary fees,DOC-4040
+JV-2026-0911,DEP-0010,OR-31010,2026-10-07,450.00,Maricar Villanueva,Collection - Certification and documentary fees,DOC-4040
+JV-2026-0912,CHK-004705,DV-2026-0956,2026-10-07,34805.50,Bicol Paper and Supplies,Payment - Office supplies,OS-5020
+JV-2026-0913,DEP-0006,OR-31006,2026-10-08,350.00,Carlo Corral,"Collection - Other school fees (ID, library, athletics)",OSF-4050
+JV-2026-0914,DEP-0009,OR-31009,2026-10-08,2550.00,Angelica Ramos,Collection - Laboratory fees,LAB-4020
+JV-2026-0915,DEP-0012,OR-31012,2026-10-08,1450.00,Rey Villanueva,Collection - Laboratory fees,LAB-4020
+JV-2026-0916,CHK-004706,DV-2026-0955,2026-10-08,22391.00,Partido Aircon Services,Payment - Repairs and maintenance,RM-5040
+JV-2026-0917,CHK-004707,DV-2026-0957,2026-10-08,18590.75,Local Water District,Payment - Electricity and water,UT-5030
+JV-2026-0918,DEP-0005,OR-31005,2026-10-09,300.00,Nicole Abad,"Collection - Other school fees (ID, library, athletics)",OSF-4050
+JV-2026-0919,DEP-0011,OR-31011,2026-10-09,300.00,Paolo Reyes,Collection - Entrance exam fee,EXM-4030
+JV-2026-0920,DEP-0013,OR-31013,2026-10-09,400.00,Cherry Ramos,Collection - Entrance exam fee,EXM-4030
+JV-2026-0921,DEP-0015,OR-31015,2026-10-09,300.00,Ramon Villanueva,"Collection - Other school fees (ID, library, athletics)",OSF-4050
+JV-2026-0922,CHK-004708,DV-2026-0959,2026-10-12,11583.50,Nabua Stationery Trading,Payment - Office supplies,OS-5020
+JV-2026-0923,CHK-004709,,2026-10-12,21681.50,Faculty travel reimbursement,Payment - Travel expenses,TR-5050
+JV-2026-0924,CHK-004710,DV-2026-0958,2026-10-12,10153.00,Bicol Paper and Supplies,Payment - Office supplies,OS-5020
+JV-2026-0925,DEP-0014,OR-31014,2026-10-13,7150.00,Paolo Corral,Collection - Income generating project sales,IGP-4070
+JV-2026-0926,CHK-004711,DV-2026-0961,2026-10-13,30470.75,Rinconada Laboratory Supply,Payment - Equipment outlay,EQ-5070
+JV-2026-0927,DEP-0016,OR-31016,2026-10-14,2200.00,Mae Bautista,Collection - Laboratory fees,LAB-4020
+JV-2026-0928,DEP-0017,OR-31017,2026-10-15,17800.00,Paolo Reyes,Collection - Graduate school tuition,GSC-4010
+JV-2026-0929,DEP-0017,OR-31017,2026-10-15,17800.00,Paolo Reyes,Collection - Graduate school tuition,GSC-4010
+JV-2026-0930,CHK-04712,DV-2026-0962,2026-10-15,6635.00,Faculty travel reimbursement,Payment - Travel expenses,TR-5050
+JV-2026-0931,DEP-0018,OR-31018,2026-10-16,14700.00,Maricar Reyes,"Collection - Rental income (canteen, dormitory)",RNT-4060
+JV-2026-0932,CHK-004713,DV-2026-0963,2026-10-16,34421.25,Camarines Electric Cooperative,Payment - Electricity and water,UT-5030
+JV-2026-0933,CHK-004714,DV-2026-0964,2026-10-19,42189.00,Naga Data Systems,Payment - Training and seminars,TS-5060
+JV-2026-0934,DEP-0022,OR-31022,2026-10-20,16300.00,Ramon Obias,Collection - Graduate school tuition,GSC-4010
+JV-2026-0935,DEP-0023,,2026-10-20,1200.00,Cherry Gonzales,Collection - Laboratory fees,LAB-4020
+JV-2026-0936,CHK-004715,DV-2026-0965,2026-10-20,45563.75,Bicol Tech Hardware,Payment - Repairs and maintenance,RM-5040
+JV-2026-0937,CHK-004716,DV-2062-0966,2026-10-20,44525.25,Local Water District,Payment - Electricity and water,UT-5030
+JV-2026-0938,DEP-0019,OR-31019,2026-10-21,3200.00,Rey Reyes,Collection - Income generating project sales,IGP-4070
+JV-2026-0939,DEP-0021,OR-31021,2026-10-21,2640.00,Liza Obias,Collection - Laboratory fees,LAB-4020
+JV-2026-0940,DEP-0025,OR-31025,2026-10-21,2000.00,Arvin Belen,Collection - Laboratory fees,LAB-4020
+JV-2026-0941,DEP-0024,OR-31024,2026-10-22,10600.00,Dianne Obias,Collection - Graduate school tuition,GSC-4010
+JV-2026-0942,DEP-0027,OR-31028,2026-10-22,18500.00,Nicole Villanueva,Collection - Graduate school tuition,GSC-4010
+JV-2026-0943,CHK-004717,DV-2026-0967,2026-10-22,7945.00,Rinconada Office Mart,Payment - Office supplies,OS-5020
+JV-2026-0944,DEP-0028,OR-31029,2026-10-23,1700.00,Paolo Bautista,Collection - Income generating project sales,IGP-4070
+JV-2026-0945,CHK-004718,DV-2026-0968,2026-10-23,19830.00,Faculty travel reimbursement,Payment - Travel expenses,TR-5050
+JV-2026-0946,CHK-004719,DV-2026-0969,2026-10-23,25057.50,Bicol Training Center,Payment - Training and seminars,TS-5060
+JV-2026-0947,DEP-0029,OR-40031,2026-10-26,500.00,Kenneth Ramos,Collection - Entrance exam fee,EXM-4030
+JV-2026-0948,CHK-004720,DV-2026-0970,2026-10-26,32993.50,Partido Aircon Services,Payment - Repairs and maintenance,RM-5040
+JV-2026-0949,CHK-004721,DV-2026-0971,2026-10-26,8383.25,Bicol Transport Cooperative,Payment - Travel expenses,TR-5050
+JV-2026-0950,DEP-0026,OR-31027,2026-10-27,250.00,Ramon Belen,Collection - Certification and documentary fees,DOC-4040
+JV-2026-0951,DEP-0030,OR-31032,2026-10-27,400.00,Liza Pilapil,Collection - Certification and documentary fees,DOC-4040
+JV-2026-0952,CHK-004722,DV-2026-0974,2026-10-27,41013.50,Nabua Stationery Trading,Payment - Office supplies,OS-5020
+JV-2026-0953,DEP-0031,OR-31030,2026-10-28,100.00,Jessa Belen,Collection - Certification and documentary fees,DOC-4040
+JV-2026-0954,DEP-0032,OR-31033,2026-10-28,2500.00,Rey Reyes,Collection - Laboratory fees,LAB-4020
+JV-2026-0955,CHK-004723,DV-2026-0975,2026-10-28,9562.00,Student assistantship payroll,Payment - Student assistance and scholarship,SA-5080
+JV-2026-0956,CHK-004724,DV-2026-0976,2026-10-29,21122.25,Bicol Paper and Supplies,Payment - Office supplies,OS-5020
+JV-2026-0957,DEP-0033,OR-31034,2026-10-30,300.00,Gerald Obias,"Collection - Other school fees (ID, library, athletics)",OSF-4050
+JV-2026-0958,DEP-0034,OR-31035,2026-10-30,4650.00,Trisha Santos,Collection - Income generating project sales,IGP-4070

@@ -8,18 +8,37 @@ function render_report_pdf(string $title, array $rows): string
         ["\\\\", "\\(", "\\)", '', ' '],
         $text
     );
+        // 1. Find the maximum width for each column to align them perfectly
+    $colWidths = [];
+    foreach ($rows as $row) {
+        foreach ($row as $i => $value) {
+            $colWidths[$i] = max($colWidths[$i] ?? 0, strlen((string)$value));
+        }
+    }
+
+    // 2. Start building the PDF text stream
     $stream = "BT /F1 14 Tf 50 750 Td (" . $escape($title) . ") Tj ET\n";
+    
+    // We use 'F2' (Courier) for the table rows so the spacing aligns perfectly
     foreach (array_slice($rows, 0, 35) as $index => $row) {
-        $line = implode(' | ', array_map(static fn($value): string => (string) $value, $row));
-        $stream .= "BT /F1 8 Tf 35 " . (720 - $index * 19) . " Td (" . $escape($line) . ") Tj ET\n";
+        $paddedCells = [];
+        foreach ($row as $i => $value) {
+            // Add 2 extra spaces between columns for readability
+            $paddedCells[] = str_pad((string)$value, $colWidths[$i] + 2, " ");
+        }
+        $line = implode('', $paddedCells);
+        
+        // Print using F2 (Courier)
+        $stream .= "BT /F2 7 Tf 35 " . (720 - $index * 15) . " Td (" . $escape($line) . ") Tj ET\n";
     }
 
     $objects = [
         "<< /Type /Catalog /Pages 2 0 R >>",
         "<< /Type /Pages /Kids [3 0 R] /Count 1 >>",
-        "<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>",
+        "<</Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> >>",
         "<< /Length " . strlen($stream) . " >>\nstream\n" . $stream . "endstream",
         "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>",
+        "<< /Type /Font /Subtype /Type1 /BaseFont /Courier >>",
     ];
 
     $pdf = "%PDF-1.4\n";
