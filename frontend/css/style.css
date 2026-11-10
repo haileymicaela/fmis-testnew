@@ -276,6 +276,24 @@ textarea:focus {
   border-color: #1656b7;
 }
 
+/* Disabled Button Styles */
+.btn:disabled,
+.btn[disabled],
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: #cbd5e1 !important; /* Forces a gray background */
+  color: #64748b !important; /* Gray text */
+  border-color: #cbd5e1 !important;
+  box-shadow: none !important;
+}
+
+/* Keep the primary button gray when disabled, instead of its normal blue */
+.btn.primary:disabled {
+  background-color: #cbd5e1 !important;
+  color: #64748b !important;
+}
+
 .btn.sm {
   padding: 7px 10px;
 }
