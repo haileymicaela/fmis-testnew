@@ -6,7 +6,10 @@ require_once __DIR__ . '/../includes/bootstrap.php';
 require_once __DIR__ . '/../includes/auth.php';
 
 require_method('GET');
-require_auth();
+$user = require_auth();
+if ($user['role_label'] === ROLE_BOOKKEEPER) {
+    json_success([]);
+}
 
 $period = get_period_value($_GET['period'] ?? null);
 $pdo = db();

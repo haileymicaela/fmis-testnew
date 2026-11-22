@@ -2,10 +2,29 @@
 
 declare(strict_types=1);
 
-function require_auth(): void
+const ROLE_BOOKKEEPER = 'Bookkeeper 1';
+const ROLE_ACCOUNTANT = 'Accountant';
+const ROLE_HEAD_ACCOUNTANT = 'Head Accountant';
+
+function require_auth(): array
 {
-    if (empty($_SESSION['user_id'])) {
+    $user = current_user();
+    if ($user === null) {
         json_error('Authentication required.', 401);
+    }
+
+    if (!in_array($user['role_label'], [ROLE_BOOKKEEPER, ROLE_ACCOUNTANT, ROLE_HEAD_ACCOUNTANT], true)) {
+        json_error('An accounting role must be assigned to this account.', 403);
+    }
+
+    return $user;
+}
+
+function require_role(string ...$allowedRoles): void
+{
+    $user = require_auth();
+    if (!in_array($user['role_label'], $allowedRoles, true)) {
+        json_error('Your role does not have permission to perform this action.', 403);
     }
 }
 

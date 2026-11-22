@@ -6,7 +6,7 @@ require_once __DIR__ . '/../../includes/bootstrap.php';
 require_once __DIR__ . '/../../includes/auth.php';
 
 require_method('POST');
-require_auth();
+$user = require_auth();
 check_csrf_if_present();
 
 $payload = read_json_input();
@@ -18,6 +18,9 @@ if ($id <= 0) {
 $status = strtolower(trim((string) ($payload['status'] ?? '')));
 if (!in_array($status, ['resolved', 'escalated'], true)) {
     json_error('Status must be "resolved" or "escalated".', 422);
+}
+if ($status === 'escalated' && $user['role_label'] === ROLE_BOOKKEEPER) {
+    json_error('Only an Accountant or Head Accountant can escalate a discrepancy.', 403);
 }
 $note = trim((string) ($payload['note'] ?? ''));
 if ($note === '' || mb_strlen($note) > 255) {
@@ -83,6 +86,10 @@ try {
 
     if ($status === 'resolved' && $discrepancy['issue_type'] === 'date_gap'
         && $discrepancy['counter_record_id'] !== null) {
+        if ($user['role_label'] === ROLE_BOOKKEEPER) {
+            $pdo->rollBack();
+            json_error('An Accountant or Head Accountant must resolve this discrepancy because it can confirm a match.', 403);
+        }
         accept_date_variance($pdo, $discrepancy);
     }
 

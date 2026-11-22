@@ -1,0 +1,6 @@
+# Route the existing Audit Trail URL through the role check under XAMPP Apache.
+RewriteEngine On
+RewriteRule ^frontend/audit-trail\.html(?:/.*)?$ backend/audit-page.php [END]
+
+# Saved report files must be served by the authorized download endpoint.
+RewriteRule ^backend/storage/reports(?:/|$) - [F]
