@@ -28,7 +28,7 @@ CREATE TABLE users (
   full_name VARCHAR(80) NOT NULL,
   email VARCHAR(120) NOT NULL UNIQUE,
   password_hash VARCHAR(255) NOT NULL,
-  role_label VARCHAR(60) NOT NULL DEFAULT 'Authorized accountant',
+  role_label VARCHAR(60) NOT NULL DEFAULT 'Bookkeeper 1',
   initials VARCHAR(4) NOT NULL,
   failed_attempts TINYINT UNSIGNED NOT NULL DEFAULT 0,
   locked_until DATETIME NULL,
@@ -233,9 +233,9 @@ CREATE TABLE audit_log (
 
 -- ----------------------------------------------------------- users
 INSERT INTO users (id, full_name, email, password_hash, role_label, initials) VALUES
-(1, 'Maria Santos', 'maria.santos@cspc.edu.ph', '$2y$10$JVFoWS7AXDokwN3qFv88oOKen5xY1m5eE77dlmkR8JNTPWEEgfEBu', 'Authorized accountant', 'MS'),
-(2, 'Juan Dela Cruz', 'juan.delacruz@cspc.edu.ph', '$2y$10$JVFoWS7AXDokwN3qFv88oOKen5xY1m5eE77dlmkR8JNTPWEEgfEBu', 'Authorized accountant', 'JD'),
-(3, 'Ana Reyes', 'ana.reyes@cspc.edu.ph', '$2y$10$JVFoWS7AXDokwN3qFv88oOKen5xY1m5eE77dlmkR8JNTPWEEgfEBu', 'Authorized accountant', 'AR');
+(1, 'Maria Santos', 'maria.santos@cspc.edu.ph', '$2y$10$JVFoWS7AXDokwN3qFv88oOKen5xY1m5eE77dlmkR8JNTPWEEgfEBu', 'Head Accountant', 'MS'),
+(2, 'Gabriel Mateo', 'juan.delacruz@cspc.edu.ph', '$2y$10$JVFoWS7AXDokwN3qFv88oOKen5xY1m5eE77dlmkR8JNTPWEEgfEBu', 'Accountant', 'GM'),
+(3, 'Sofia Navarro', 'ana.reyes@cspc.edu.ph', '$2y$10$JVFoWS7AXDokwN3qFv88oOKen5xY1m5eE77dlmkR8JNTPWEEgfEBu', 'Bookkeeper 1', 'SN');
 
 -- --------------------------------------------------------- settings
 INSERT INTO settings (skey, svalue) VALUES

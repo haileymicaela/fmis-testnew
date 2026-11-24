@@ -7,7 +7,7 @@ require_once __DIR__ . '/../includes/auth.php';
 require_once __DIR__ . '/../includes/staging.php';
 
 require_method('POST');
-require_auth();
+require_role(ROLE_ACCOUNTANT, ROLE_HEAD_ACCOUNTANT);
 check_csrf_if_present();
 
 $payload = read_json_input();

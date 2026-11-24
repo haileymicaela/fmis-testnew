@@ -50,7 +50,7 @@ function render_xlsx_download(string $title, string $period, string $target): vo
 }
 
 require_method('GET');
-require_auth();
+require_role(ROLE_ACCOUNTANT, ROLE_HEAD_ACCOUNTANT);
 
 $id = (int) ($_GET['id'] ?? 0);
 $pdo = db();

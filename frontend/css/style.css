@@ -65,6 +65,7 @@ a {
 }
 
 .brand {
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -138,14 +139,16 @@ a {
   margin-top: 18px;
 }
 
-.side-bottom {
-  margin-top: 18px;
+.sidebar-menu {
   flex: 1;
-  display: flex;
-  flex-direction: column;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #5576a6 transparent;
 }
 
 .support {
+  margin-top: 18px;
   background: #173466;
   border: 1px solid #2a4675;
   border-radius: 8px;
@@ -165,10 +168,10 @@ a {
 }
 
 .account {
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-top: auto;
   padding: 7px 2px;
   border-top: 1px solid #2b3f66;
 }
@@ -276,19 +279,17 @@ textarea:focus {
   border-color: #1656b7;
 }
 
-/* Disabled Button Styles */
 .btn:disabled,
 .btn[disabled],
 button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
-  background-color: #cbd5e1 !important; /* Forces a gray background */
-  color: #64748b !important; /* Gray text */
+  background-color: #cbd5e1 !important;
+  color: #64748b !important;
   border-color: #cbd5e1 !important;
   box-shadow: none !important;
 }
 
-/* Keep the primary button gray when disabled, instead of its normal blue */
 .btn.primary:disabled {
   background-color: #cbd5e1 !important;
   color: #64748b !important;
@@ -1215,4 +1216,38 @@ tr:hover td {
   .login-form {
     padding: 42px;
   }
+}
+
+.header-profile {
+  display: grid;
+  gap: 3px;
+  padding: 8px 12px;
+  border: 1px solid #d8e2f0;
+  border-radius: 8px;
+  background: #fff;
+  line-height: 1.25;
+}
+
+.header-profile span {
+  color: #24559b;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.user-form,
+.user-form label {
+  display: grid;
+  gap: 8px;
+}
+
+.user-form {
+  gap: 14px;
+}
+
+.user-form-error {
+  color: #a52929;
+}
+
+.user-form-error:empty {
+  display: none;
 }

@@ -6,7 +6,7 @@ require_once __DIR__ . '/../includes/bootstrap.php';
 require_once __DIR__ . '/../includes/auth.php';
 
 require_method('GET');
-require_auth();
+require_role(ROLE_HEAD_ACCOUNTANT);
 
 $period = get_period_value($_GET['period'] ?? null);
 $pdo = db();

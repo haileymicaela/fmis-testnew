@@ -10,7 +10,37 @@ Desktop-first accounting reconciliation module based on the CSPC Figma designs. 
 4. Ensure XAMPP's PHP has `pdo_mysql` enabled. The current XAMPP MySQL connection and API authentication have been verified.
 5. Real API mode is enabled by default in `frontend/js/config.js`. To run an offline demo instead, set `window.CSPC_API_MODE` to `'mock'`.
 
-The login screen uses the demo accountant account in the local database. To check the authenticated API session, request `backend/api/auth/session.php` through Apache.
+The login screen uses the existing demo accounts. To check the authenticated API session, request `backend/api/auth/session.php` through Apache.
+
+### Accounting roles
+
+For an existing database, select it in phpMyAdmin and import only
+`database/migrations/2026_11_accounting_roles.sql` before opening this version.
+After the role migration, import
+`database/migrations/2026_11_staff_display_names.sql` to apply the staff display names.
+If the role migration has already been applied, import only the display-name migration.
+Fresh database imports already contain the roles and display names. Existing account IDs,
+sign-in emails, and passwords are preserved.
+
+| Display name | Existing sign-in email | Role |
+| --- | --- | --- |
+| Maria Santos | maria.santos@cspc.edu.ph | Head Accountant |
+| Gabriel Mateo | juan.delacruz@cspc.edu.ph | Accountant |
+| Sofia Navarro | ana.reyes@cspc.edu.ph | Bookkeeper 1 |
+
+The signed-in account's name and role appear in the header. In Real API mode,
+Head Accountant can open **Administration → User Management** to list staff,
+create accounts, and edit staff names and roles.
+
+For other accounts, set `users.role_label` to one of the role names above.
+The real API checks permissions. XAMPP Apache needs `mod_rewrite` and
+.htaccess overrides enabled for the Audit Trail page and saved report storage.
+
+The accounting pages continue to show their existing action controls. Bookkeeper 1
+can resolve discrepancies that do not trigger match confirmation. Resolving a
+date-gap discrepancy with a linked record requires Accountant or Head Accountant
+because that workflow can confirm the match. The direct PDF and Excel buttons
+create exports in the browser using data already available to that user.
 
 ## Import CSV format
 
